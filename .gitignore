@@ -1,0 +1,36 @@
+# Archivos y carpetas generadas por Maven
+/target/
+
+# Configuraciones de IntelliJ IDEA
+/.idea/
+/*.iml
+
+# Configuraciones de Eclipse
+.project
+.classpath
+.settings/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de log
+*.log
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+
+# Archivos de entorno o configuración local
+.env
+*.local
+
+# Archivos de Docker que no quieras subir (opcional)
+*.pid
+
+# Sistema de compilación
+/build/
+
+# Salida del test
+/surefire-reports/

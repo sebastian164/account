@@ -1,0 +1,21 @@
+spring:
+  main:
+    allow-circular-references: true
+  application:
+    name: Account Ms Devsu
+  profiles:
+    active: dev
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate.hbm2ddl.auto: update
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
