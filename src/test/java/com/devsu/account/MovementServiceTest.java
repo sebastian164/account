@@ -59,6 +59,35 @@ class MovementServiceTest {
     }
 
     @Test
+    void testCreateRemoveDeposit_success() {
+        Account account = Account.builder()
+                .id(1L)
+                .accountNumber("123")
+                .type("AHORROS")
+                .initialBalance(BigDecimal.valueOf(1000))
+                .state(true)
+                .clientId(1L)
+                .build();
+
+        Movement movement = Movement.builder()
+                .accountId(1L)
+                .type("RETIRO")
+                .amount(BigDecimal.valueOf(500))
+                .date(LocalDateTime.now())
+                .build();
+
+        when(accountRepository.findById(1L)).thenReturn(Optional.of(account));
+        when(movementRepository.save(any())).thenAnswer(i -> i.getArgument(0));
+
+        Movement result = service.create(movement);
+
+        assertNotNull(result);
+        assertEquals(BigDecimal.valueOf(500), result.getBalance());
+        assertEquals(BigDecimal.valueOf(-500), result.getAmount());
+        verify(accountRepository).save(account);
+    }
+
+    @Test
     void testCreateWithdrawal_success() {
         Account account = Account.builder()
                 .id(1L)
